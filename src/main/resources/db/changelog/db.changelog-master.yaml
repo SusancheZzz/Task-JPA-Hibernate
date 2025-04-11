@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - includeAll:
+      path: create
+      relativeToChangelogFile: true
+
+  - include:
+      file: foreignkeys/changeset-001-add-foreign-keys.sql
+      relativeToChangelogFile: true
