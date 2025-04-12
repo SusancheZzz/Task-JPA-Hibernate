@@ -18,14 +18,13 @@ import lombok.Getter;
 @Getter
 @NamedQuery(name = "Song.findPopularSongsOfArtistBuPurchase",
   query = """
-      select new com.rntgroup.jpatask.dto.SongStatDto(
-      s.id,
-      s.title,
-      s.duration,
-      alb.title,
-      s.artist.name,
-      count(p.id)
-      )
+      select
+      s.id as songId,
+      s.title as songTitle,
+      s.duration as duration,
+      alb.title as albumName,
+      s.artist.name as artistName,
+      count(p.id) as countPurchase
       from  Song s
         join s.artist art
         join s.album alb

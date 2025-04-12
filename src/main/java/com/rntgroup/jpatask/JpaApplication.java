@@ -24,6 +24,7 @@ public class JpaApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
+
     var jpqlRichUserStats = userService.getRichUsers(2);
     var namedPopularTracks = songService.getPopularSongsOfArtist(
       "Helene_08102f44-9cad-4b64-8f6c-16d4bed63a3f",
@@ -31,6 +32,16 @@ public class JpaApplication implements CommandLineRunner {
     );
     var nativeTopRichArtist = artistService.getRichArtistsBySumPurchases(20_000);
     var criteriaAlbums = albumService.getAlbumsWithMoreThanXsongs(2);
+
+    System.out.println(
+      nativeTopRichArtist.getFirst().getArtistName()
+        + '\n'
+        + jpqlRichUserStats.getFirst().getUsername()
+        + '\n'
+        + namedPopularTracks.getFirst().getSongTitle()
+        + '\n'
+        + criteriaAlbums.getFirst().albumName()
+    );
 
     System.out.println();
   }

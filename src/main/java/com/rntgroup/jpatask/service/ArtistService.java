@@ -1,8 +1,8 @@
 package com.rntgroup.jpatask.service;
 
 import com.rntgroup.jpatask.config.AppDataConfig;
-import com.rntgroup.jpatask.dto.ArtistPurchaseStatDto;
 import com.rntgroup.jpatask.entity.Artist;
+import com.rntgroup.jpatask.proj.ArtistPurchaseStatProj;
 import com.rntgroup.jpatask.repos.ArtistRepo;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -37,15 +37,8 @@ public class ArtistService {
   }
 
   @Transactional(readOnly = true)
-  public List<ArtistPurchaseStatDto> getRichArtistsBySumPurchases(int minSumPurchases) {
-    return artistRepo.findRichArtistsBySumPurchases(minSumPurchases).stream()
-      .map(row -> new ArtistPurchaseStatDto(
-        ((Number) row.get("id")).longValue(),
-        row.get("name").toString(),
-        ((Number) row.get("totalsum")).intValue(),
-        ((Number) row.get("totalpurchases")).intValue()
-      ))
-      .toList();
+  public List<ArtistPurchaseStatProj> getRichArtistsBySumPurchases(int minSumPurchases) {
+    return artistRepo.findRichArtistsBySumPurchases(minSumPurchases);
   }
 
   public void updateName(long artistId, String newName) {

@@ -1,6 +1,6 @@
 databaseChangeLog:
-  - includeAll:
-      path: create
+  - include:
+      file: create/changeset-001-create.sql
       relativeToChangelogFile: true
 
   - include:

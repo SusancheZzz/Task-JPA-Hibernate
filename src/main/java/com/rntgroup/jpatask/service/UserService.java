@@ -1,8 +1,8 @@
 package com.rntgroup.jpatask.service;
 
 import com.rntgroup.jpatask.config.AppDataConfig;
-import com.rntgroup.jpatask.dto.UserStatDto;
 import com.rntgroup.jpatask.entity.User;
+import com.rntgroup.jpatask.proj.UserStatProj;
 import com.rntgroup.jpatask.repos.UserRepo;
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class UserService {
   private final Faker faker = new Faker();
 
   @Transactional(readOnly = true)
-  public List<UserStatDto> getRichUsers(int minCountPurchases) {
+  public List<UserStatProj> getRichUsers(int minCountPurchases) {
     return userRepo.findAllRichUserOrderBySumDesc(minCountPurchases);
   }
 

@@ -1,7 +1,7 @@
 package com.rntgroup.jpatask.repos;
 
-import com.rntgroup.jpatask.dto.SongStatDto;
 import com.rntgroup.jpatask.entity.Song;
+import com.rntgroup.jpatask.proj.SongStatProj;
 import java.util.List;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,7 +24,7 @@ public interface SongRepo extends JpaRepository<Song, Long> {
   List<Song> findAllByAuthorName(@Param("artistName") String artistName);
 
   @Query(name = "Song.findPopularSongsOfArtistBuPurchase")
-  List<SongStatDto> findAllSongOfArtistByCountPurchase(
+  List<SongStatProj> findAllSongOfArtistByCountPurchase(
     @Param("artistName") String artistName,
     @Param("minCountPurchase") int minCountPurchase
   );

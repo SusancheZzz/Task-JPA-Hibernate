@@ -1,10 +1,10 @@
 package com.rntgroup.jpatask.service;
 
 import com.rntgroup.jpatask.config.AppDataConfig;
-import com.rntgroup.jpatask.dto.SongStatDto;
 import com.rntgroup.jpatask.entity.Album;
 import com.rntgroup.jpatask.entity.Artist;
 import com.rntgroup.jpatask.entity.Song;
+import com.rntgroup.jpatask.proj.SongStatProj;
 import com.rntgroup.jpatask.repos.AlbumRepo;
 import com.rntgroup.jpatask.repos.ArtistRepo;
 import com.rntgroup.jpatask.repos.SongRepo;
@@ -36,7 +36,7 @@ public class SongService {
   }
 
   @Transactional(readOnly = true)
-  public List<SongStatDto> getPopularSongsOfArtist(String artistName, int minCountPurchase) {
+  public List<SongStatProj> getPopularSongsOfArtist(String artistName, int minCountPurchase) {
     return songRepo.findAllSongOfArtistByCountPurchase(artistName, minCountPurchase);
   }
 

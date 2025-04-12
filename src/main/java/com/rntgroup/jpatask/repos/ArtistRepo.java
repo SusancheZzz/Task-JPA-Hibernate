@@ -1,8 +1,8 @@
 package com.rntgroup.jpatask.repos;
 
 import com.rntgroup.jpatask.entity.Artist;
+import com.rntgroup.jpatask.proj.ArtistPurchaseStatProj;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,8 +24,8 @@ public interface ArtistRepo extends JpaRepository<Artist, Long> {
     nativeQuery = true,
     value = """
       select
-        a.id,
-        a.name,
+        a.id as artistId,
+        a.name as artistName,
         sum(p.price) as totalSum,
         count(p.id) as totalPurchases
       from artist as a
@@ -36,6 +36,6 @@ public interface ArtistRepo extends JpaRepository<Artist, Long> {
       order by sum(p.price) desc
       """
   )
-  List<Map<String, Object>> findRichArtistsBySumPurchases(
+  List<ArtistPurchaseStatProj> findRichArtistsBySumPurchases(
     @Param("minSumPurchases") int minSumPurchases);
 }

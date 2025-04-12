@@ -1,8 +1,8 @@
-package com.rntgroup.jpatask.dto;
+package com.rntgroup.jpatask.proj;
 
 import java.util.List;
 
-public record AlbumStatDto(
+public record AlbumStatProj(
   Long albumId,
   String albumName,
   String artistName,

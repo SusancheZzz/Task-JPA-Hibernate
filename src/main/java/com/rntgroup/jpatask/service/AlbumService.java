@@ -1,10 +1,10 @@
 package com.rntgroup.jpatask.service;
 
 import com.rntgroup.jpatask.config.AppDataConfig;
-import com.rntgroup.jpatask.dto.AlbumStatDto;
 import com.rntgroup.jpatask.entity.Album;
 import com.rntgroup.jpatask.entity.Artist;
 import com.rntgroup.jpatask.entity.Song;
+import com.rntgroup.jpatask.proj.AlbumStatProj;
 import com.rntgroup.jpatask.repos.AlbumCriteriaDao;
 import com.rntgroup.jpatask.repos.AlbumRepo;
 import com.rntgroup.jpatask.repos.ArtistRepo;
@@ -46,9 +46,9 @@ public class AlbumService {
   }
 
   @Transactional(readOnly = true)
-  public List<AlbumStatDto> getAlbumsWithMoreThanXsongs(int minAcceptCountSongs) {
+  public List<AlbumStatProj> getAlbumsWithMoreThanXsongs(int minAcceptCountSongs) {
     return albumCriteriaDao.findAlbumsWithMoreThanXsongs(minAcceptCountSongs).stream()
-      .map(album -> new AlbumStatDto(
+      .map(album -> new AlbumStatProj(
         album.getId(),
         album.getTitle(),
         album.getArtist().getName(),
